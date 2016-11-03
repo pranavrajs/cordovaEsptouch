@@ -54,23 +54,23 @@ public class esptouchPlugin extends CordovaPlugin {
                         int count = 0;
                         final int maxDisplayCount = taskResultCount;
                         if (firstResult.isSuc()) {
-                            // StringBuilder sb = new StringBuilder();
-                            // for (IEsptouchResult resultInList : resultList) {
-                            	// sb.append("device"+count+",bssid="
-                            			// + resultInList.getBssid()
-                            			// + ",InetAddress="
-                            			// + resultInList.getInetAddress()
-                            					// .getHostAddress() + ".");
-                            	// count++;
-                            	// if (count >= maxDisplayCount) {
-                            		// break;
-                            	// }
-                            // }
-                            // if (count < resultList.size()) {
-                            	// sb.append("\nthere's " + (resultList.size() - count)
-                            			// + " more resultList(s) without showing\n");
-                            // }
-                            PluginResult result = new PluginResult(PluginResult.Status.OK, "finished");
+                             StringBuilder sb = new StringBuilder();
+                             for (IEsptouchResult resultInList : resultList) {
+                            	 sb.append("device"+count+",bssid="
+                            			 + resultInList.getBssid()
+                            			 + ",InetAddress="
+                            			 + resultInList.getInetAddress()
+                            					 .getHostAddress() + ".");
+                            	 count++;
+                            	 if (count >= maxDisplayCount) {
+                            		 break;
+                            	 }
+                             }
+                             if (count < resultList.size()) {
+                            	 sb.append("\nthere's " + (resultList.size() - count)
+                            			 + " more resultList(s) without showing\n");
+                             }
+                            PluginResult result = new PluginResult(PluginResult.Status.OK, "Response"+sb.toString());
                             result.setKeepCallback(true);           // keep callback after this call
                             receivingCallbackContext.sendPluginResult(result);
                             //receivingCallbackContext.success("finished");
